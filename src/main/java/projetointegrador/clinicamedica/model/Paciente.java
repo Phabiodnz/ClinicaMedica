@@ -17,6 +17,7 @@ public class Paciente {
     private String endereco;
     private String numero;
     private String bairro;
+    private String cidade;
     private String estado;
     private String telefone;
     private Date dataNascimento;

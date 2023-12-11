@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projetointegrador.clinicamedica.view;
+import javax.swing.JOptionPane;
+import projetointegrador.clinicamedica.controller.FuncionarioController;
 
 /**
  *
@@ -49,6 +51,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jlabelData = new javax.swing.JLabel();
         jformtxtData = new javax.swing.JFormattedTextField();
         jButtonCadastro = new javax.swing.JButton();
+        jlabelData1 = new javax.swing.JLabel();
+        jtxtSexo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -145,11 +149,18 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jlabelData1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jlabelData1.setText("Sexo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(retanguloTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jButtonCadastro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +201,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                                     .addComponent(jlabelEstado)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jtxtEstado))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jlabelData)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jlabelData1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxtSexo))
+                                .addComponent(jlabelData))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jformtxtData, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -199,10 +215,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxtTelefone)))
                 .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jButtonCadastro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,9 +254,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlabelData)
                     .addComponent(jformtxtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlabelData1)
+                    .addComponent(jtxtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jButtonCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -268,7 +284,20 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtEnderecoActionPerformed
 
     private void jButtonCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroActionPerformed
-        // TODO add your handling code here:
+        boolean sucesso;
+        
+        try{
+            FuncionarioController funcionarioController = new FuncionarioController();
+            sucesso = funcionarioController.cadastrarFuncionario(jtxtNome.getText(), jtxtRG.getText(),jtxtCPF.getText(), jtxtEndereco.getText(), jtxtNumero.getText(), 
+                    jtxtBairro.getText(),  jtxtCidade.getText(), jtxtEstado.getText(), jtxtTelefone.getText(), jformtxtData.getText(), jtxtSexo.getText());
+            if(sucesso){
+                JOptionPane.showMessageDialog(null,"O cadastro foi realizado com sucesso");
+                }else{
+                JOptionPane.showMessageDialog(null,"Os campos não foram preenchidos corretamente");
+            }
+        }catch (Exception erro){
+            JOptionPane.showMessageDialog(null,"Erro:" + erro);
+        }
     }//GEN-LAST:event_jButtonCadastroActionPerformed
 
     /**
@@ -313,6 +342,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jlabelCPF;
     private javax.swing.JLabel jlabelCidade;
     private javax.swing.JLabel jlabelData;
+    private javax.swing.JLabel jlabelData1;
     private javax.swing.JLabel jlabelEndereco;
     private javax.swing.JLabel jlabelEstado;
     private javax.swing.JLabel jlabelNome;
@@ -328,6 +358,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtNome;
     private javax.swing.JTextField jtxtNumero;
     private javax.swing.JTextField jtxtRG;
+    private javax.swing.JTextField jtxtSexo;
     private javax.swing.JTextField jtxtTelefone;
     private javax.swing.JPanel retanguloTitulo;
     // End of variables declaration//GEN-END:variables
