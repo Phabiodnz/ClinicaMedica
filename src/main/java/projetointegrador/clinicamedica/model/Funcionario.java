@@ -4,6 +4,8 @@
  */
 package projetointegrador.clinicamedica.model;
 import java.util.Date;
+import projetointegrador.clinicamedica.daos.FuncionarioDAO;
+import projetointegrador.clinicamedica.daos.ExceptionDAO;
 
 public class Funcionario {
     private int idFuncionario;
@@ -129,5 +131,7 @@ public class Funcionario {
         this.sexo = sexo;
     }
 
-    public void cadastrarFuncionario(Funcionario funcionario){}
+    public void cadastrarFuncionario(Funcionario funcionario) throws ExceptionDAO{
+        new FuncionarioDAO().cadastrarFuncionario(funcionario);
+    }
 }

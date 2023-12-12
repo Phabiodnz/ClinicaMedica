@@ -3,16 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projetointegrador.clinicamedica.view;
+import javax.swing.JOptionPane;
+import projetointegrador.clinicamedica.model.LoginADM;
 
 /**
  *
  * @author Phabi
  */
 public class TelaLogin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaLogin
-     */
+    LoginADM adm = new LoginADM("admin","1234");
+    
     public TelaLogin() {
         initComponents();
     }
@@ -68,7 +68,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButtonMedico.setText("Médico");
         jButtonMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMedicoActionPerformed(evt);
+                abrir_Tela(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButtonFuncionario.setText("Funcionário");
         jButtonFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFuncionarioActionPerformed(evt);
+                abrir_TelaPrincipalFuncionario(evt);
             }
         });
 
@@ -144,17 +144,26 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedicoActionPerformed
+    private void abrir_Tela(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_Tela
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMedicoActionPerformed
+    }//GEN-LAST:event_abrir_Tela
 
     private void jtxtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtLoginActionPerformed
 
-    private void jButtonFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonFuncionarioActionPerformed
+    private void abrir_TelaPrincipalFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_TelaPrincipalFuncionario
+        String login = jtxtLogin.getText();
+        String senha = String.valueOf(jPasswordFieldSenha.getPassword());
+        
+        if (login.equals(adm.getLogin()) && senha.equals(adm.getSenha())){
+            TelaPrincipalFuncionario telaPrincipalFuncionario = new TelaPrincipalFuncionario();
+            this.dispose();
+            telaPrincipalFuncionario.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,"LOGIN OU SENHA INVALIDOS");
+        }
+    }//GEN-LAST:event_abrir_TelaPrincipalFuncionario
 
     /**
      * @param args the command line arguments

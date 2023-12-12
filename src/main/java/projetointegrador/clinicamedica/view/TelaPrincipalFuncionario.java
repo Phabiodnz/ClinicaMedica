@@ -26,72 +26,201 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBarPrincipal = new javax.swing.JMenuBar();
-        jMenuFuncionario = new javax.swing.JMenu();
-        jMenuFuncionarioAlterar = new javax.swing.JMenu();
-        jMenuFuncionarioCadastrar = new javax.swing.JMenu();
-        jMenuFuncionarioDeletar = new javax.swing.JMenu();
-        jMenuFuncionarioVerificar = new javax.swing.JMenu();
-        jMenuMedico = new javax.swing.JMenu();
-        jMenuMedicoAlterar = new javax.swing.JMenu();
-        jMenuMedicoCadastrar = new javax.swing.JMenu();
-        jMenuMedicoDeletar = new javax.swing.JMenu();
-        jMenuMedicoVerificar = new javax.swing.JMenu();
+        jPanelPrincipal = new javax.swing.JPanel();
+        jPanelTitulo = new javax.swing.JPanel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelFuncao = new javax.swing.JLabel();
+        jLabelFuncionario = new javax.swing.JLabel();
+        jLabelActions = new javax.swing.JLabel();
+        jLabelSubtituloFuncionario = new javax.swing.JLabel();
+        jLabelSubtituloMedico = new javax.swing.JLabel();
+        jButtonAlterarFuncionario = new javax.swing.JButton();
+        jButtonCadastrarFuncionario = new javax.swing.JButton();
+        jButtonConsultarFuncionario = new javax.swing.JButton();
+        jButtonDeletarFuncionario = new javax.swing.JButton();
+        jButtonAlterarMedico = new javax.swing.JButton();
+        jButtonCadastrarMedico = new javax.swing.JButton();
+        jButtonConsultarMedico = new javax.swing.JButton();
+        jButtonDeletarMedico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Clínica Médica");
+        setTitle("Clinica Médica");
         setResizable(false);
 
-        jMenuFuncionario.setText("Funcionário");
-        jMenuFuncionario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanelTitulo.setBackground(new java.awt.Color(51, 51, 51));
 
-        jMenuFuncionarioAlterar.setText("Alterar");
-        jMenuFuncionario.add(jMenuFuncionarioAlterar);
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("CLINICA MÉDICA");
 
-        jMenuFuncionarioCadastrar.setText("Cadastrar");
-        jMenuFuncionario.add(jMenuFuncionarioCadastrar);
+        javax.swing.GroupLayout jPanelTituloLayout = new javax.swing.GroupLayout(jPanelTitulo);
+        jPanelTitulo.setLayout(jPanelTituloLayout);
+        jPanelTituloLayout.setHorizontalGroup(
+            jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTituloLayout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
+                .addComponent(jLabelTitulo)
+                .addGap(248, 248, 248))
+        );
+        jPanelTituloLayout.setVerticalGroup(
+            jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTituloLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabelTitulo)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
 
-        jMenuFuncionarioDeletar.setText("Deletar");
-        jMenuFuncionario.add(jMenuFuncionarioDeletar);
+        jLabelFuncao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelFuncao.setText("FUNÇÃO");
 
-        jMenuFuncionarioVerificar.setText("Verificar");
-        jMenuFuncionario.add(jMenuFuncionarioVerificar);
+        jLabelFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelFuncionario.setForeground(new java.awt.Color(255, 51, 51));
+        jLabelFuncionario.setText("FUNCIONÁRIO");
 
-        jMenuBarPrincipal.add(jMenuFuncionario);
+        jLabelActions.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelActions.setText("AÇÕES DISPONÍVEIS");
 
-        jMenuMedico.setText("Médico");
-        jMenuMedico.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelSubtituloFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelSubtituloFuncionario.setText("FUNCIONÁRIO");
 
-        jMenuMedicoAlterar.setText("Alterar");
-        jMenuMedico.add(jMenuMedicoAlterar);
+        jLabelSubtituloMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelSubtituloMedico.setText("MÉDICO");
 
-        jMenuMedicoCadastrar.setText("Cadastrar");
-        jMenuMedico.add(jMenuMedicoCadastrar);
+        jButtonAlterarFuncionario.setText("Alterar Funcionario");
 
-        jMenuMedicoDeletar.setText("Deletar");
-        jMenuMedico.add(jMenuMedicoDeletar);
+        jButtonCadastrarFuncionario.setText("Cadastrar Funcionário");
+        jButtonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrir_TelaCadastroFuncionario(evt);
+            }
+        });
 
-        jMenuMedicoVerificar.setText("Verificar");
-        jMenuMedico.add(jMenuMedicoVerificar);
+        jButtonConsultarFuncionario.setText("Consultar Funcionário");
+        jButtonConsultarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrir_TelaConsultaFuncionario(evt);
+            }
+        });
 
-        jMenuBarPrincipal.add(jMenuMedico);
+        jButtonDeletarFuncionario.setText("Deletar Funcionário");
 
-        setJMenuBar(jMenuBarPrincipal);
+        jButtonAlterarMedico.setText("Alterar Médico");
+
+        jButtonCadastrarMedico.setText("Cadastrar Médico");
+
+        jButtonConsultarMedico.setText("Consultar Médico");
+
+        jButtonDeletarMedico.setText("Deletar Médico");
+        jButtonDeletarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeletarMedicoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
+        jPanelPrincipal.setLayout(jPanelPrincipalLayout);
+        jPanelPrincipalLayout.setHorizontalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabelFuncionario)
+                        .addGap(293, 293, 293))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabelFuncao)
+                        .addGap(303, 303, 303))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabelActions)
+                        .addGap(255, 255, 255))))
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabelSubtituloFuncionario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelSubtituloMedico)
+                        .addGap(80, 80, 80))
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jButtonAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAlterarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonConsultarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCadastrarFuncionario)
+                            .addComponent(jButtonDeletarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCadastrarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonConsultarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonDeletarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38))))
+        );
+        jPanelPrincipalLayout.setVerticalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelActions)
+                .addGap(17, 17, 17)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSubtituloFuncionario)
+                    .addComponent(jLabelSubtituloMedico))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAlterarFuncionario)
+                    .addComponent(jButtonAlterarMedico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrarFuncionario)
+                    .addComponent(jButtonCadastrarMedico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonConsultarFuncionario)
+                    .addComponent(jButtonConsultarMedico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeletarFuncionario)
+                    .addComponent(jButtonDeletarMedico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(jLabelFuncao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelFuncionario)
+                .addGap(32, 32, 32))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonDeletarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeletarMedicoActionPerformed
+
+    private void abrir_TelaCadastroFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_TelaCadastroFuncionario
+        TelaCadastroFuncionario telaCadastro = new TelaCadastroFuncionario();
+        telaCadastro.setVisible(true);
+    }//GEN-LAST:event_abrir_TelaCadastroFuncionario
+
+    private void abrir_TelaConsultaFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_TelaConsultaFuncionario
+        TelaConsultaFuncionario telaConsulta = new TelaConsultaFuncionario();
+        telaConsulta.setVisible(true);
+    }//GEN-LAST:event_abrir_TelaConsultaFuncionario
 
     /**
      * @param args the command line arguments
@@ -129,16 +258,21 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar jMenuBarPrincipal;
-    private javax.swing.JMenu jMenuFuncionario;
-    private javax.swing.JMenu jMenuFuncionarioAlterar;
-    private javax.swing.JMenu jMenuFuncionarioCadastrar;
-    private javax.swing.JMenu jMenuFuncionarioDeletar;
-    private javax.swing.JMenu jMenuFuncionarioVerificar;
-    private javax.swing.JMenu jMenuMedico;
-    private javax.swing.JMenu jMenuMedicoAlterar;
-    private javax.swing.JMenu jMenuMedicoCadastrar;
-    private javax.swing.JMenu jMenuMedicoDeletar;
-    private javax.swing.JMenu jMenuMedicoVerificar;
+    private javax.swing.JButton jButtonAlterarFuncionario;
+    private javax.swing.JButton jButtonAlterarMedico;
+    private javax.swing.JButton jButtonCadastrarFuncionario;
+    private javax.swing.JButton jButtonCadastrarMedico;
+    private javax.swing.JButton jButtonConsultarFuncionario;
+    private javax.swing.JButton jButtonConsultarMedico;
+    private javax.swing.JButton jButtonDeletarFuncionario;
+    private javax.swing.JButton jButtonDeletarMedico;
+    private javax.swing.JLabel jLabelActions;
+    private javax.swing.JLabel jLabelFuncao;
+    private javax.swing.JLabel jLabelFuncionario;
+    private javax.swing.JLabel jLabelSubtituloFuncionario;
+    private javax.swing.JLabel jLabelSubtituloMedico;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPanelPrincipal;
+    private javax.swing.JPanel jPanelTitulo;
     // End of variables declaration//GEN-END:variables
 }

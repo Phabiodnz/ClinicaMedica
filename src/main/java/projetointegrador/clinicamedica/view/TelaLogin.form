@@ -128,7 +128,7 @@
         <Property name="text" type="java.lang.String" value="M&#xe9;dico"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMedicoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrir_Tela"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlabelLogin">
@@ -163,7 +163,7 @@
         <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFuncionarioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrir_TelaPrincipalFuncionario"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFuncao">
