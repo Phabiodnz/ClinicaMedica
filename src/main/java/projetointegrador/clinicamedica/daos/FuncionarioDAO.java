@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -49,5 +51,53 @@ public class FuncionarioDAO {
                 throw new ExceptionDAO("Erro ao fechar a Conexão: "+ e3);
             }
         }
+    }
+    
+    public ArrayList<Funcionario> listarFuncionarios(String nome) throws ExceptionDAO{
+        String sql = ("SELECT * FROM funcionario WHERE nome LIKE '%"+ nome +"%' ORDER BY nome");
+        PreparedStatement pStatement = null;
+        Connection connection = null;
+        ArrayList<Funcionario> funcionarios = null;
+        
+        try{
+            connection = new ConnectionDB().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            ResultSet rs = pStatement.executeQuery(sql);
+            
+            if(rs!=null){
+                funcionarios = new ArrayList<Funcionario>();
+                while (rs.next()){
+                    Funcionario funcionario = new Funcionario();
+                    funcionario.setIdFuncionario(rs.getInt("idFuncionario"));
+                    funcionario.setNomeCompleto(rs.getString("Nome"));
+                    funcionario.setRG(rs.getString("RG"));
+                    funcionario.setCPF(rs.getString("CPF"));
+                    funcionario.setEndereco(rs.getString("Endereco"));
+                    funcionario.setNumero("Numero");
+                    funcionario.setBairro(rs.getString("Bairro"));
+                    funcionario.setCidade(rs.getString("Cidade"));
+                    funcionario.setEstado(rs.getString("Estado"));
+                    funcionario.setTelefone(rs.getString("Telefone"));
+                    funcionario.setDataNascimento(rs.getDate("dataNascimento"));
+                    funcionario.setSexo(rs.getString("Sexo"));
+                    funcionarios.add(funcionario);      
+                }
+            }
+            
+        } catch (SQLException e1){
+            throw new ExceptionDAO("Erro ao Consultar Funcionário" + e1);
+        } finally{
+            try{
+                if(pStatement != null){pStatement.close();}
+            } catch (SQLException e2){
+                throw new ExceptionDAO("Erro ao Fechar o Statement" + e2);
+            }
+            try{
+                if(connection != null){connection.close();}
+            } catch (SQLException e3){
+                throw new ExceptionDAO("Erro ao Fechar a Conexão" + e3);
+            }
+        }
+        return funcionarios;
     }
 }

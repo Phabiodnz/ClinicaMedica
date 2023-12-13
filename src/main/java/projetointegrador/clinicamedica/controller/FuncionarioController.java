@@ -7,6 +7,7 @@ import java.text.ParseException;
 import projetointegrador.clinicamedica.model.Funcionario;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import projetointegrador.clinicamedica.daos.ExceptionDAO;
 
 /**
@@ -14,6 +15,7 @@ import projetointegrador.clinicamedica.daos.ExceptionDAO;
  * @author Phabi
  */
 public class FuncionarioController {
+    
     public boolean cadastrarFuncionario(String nomeCompleto,String RG,String CPF,String endereco,String numero,String bairro,String cidade,String estado,String telefone,String dataNascimento,String sexo) throws ParseException, ExceptionDAO{
         if(nomeCompleto != null && nomeCompleto.length() > 0 && RG != null && RG.length() > 0 && validarCPF(CPF) && endereco != null && endereco.length() > 0 
                 && numero != null && numero.length() > 0 && bairro != null && bairro.length() > 0 && cidade != null && cidade.length() > 0 && estado != null && estado.length() > 0 
@@ -49,5 +51,9 @@ public class FuncionarioController {
             }
         }   
         return true;
-    } 
+    }
+    
+    public ArrayList<Funcionario> listarFuncionarios(String nome) throws ExceptionDAO{
+        return new Funcionario().listarClientes(nome);
+    }
 }

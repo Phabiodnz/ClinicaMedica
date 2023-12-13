@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package projetointegrador.clinicamedica.model;
+import java.util.ArrayList;
 import java.util.Date;
 import projetointegrador.clinicamedica.daos.FuncionarioDAO;
 import projetointegrador.clinicamedica.daos.ExceptionDAO;
@@ -21,6 +22,10 @@ public class Funcionario {
     private Date dataNascimento;
     private String sexo;
 
+    public Funcionario(){
+        
+    }
+    
     public Funcionario(String nomeCompleto, String RG, String CPF, String endereco, String numero, String bairro, String cidade, String estado, String telefone, Date dataNascimento, String sexo) {
         this.nomeCompleto = nomeCompleto;
         this.RG = RG;
@@ -133,5 +138,9 @@ public class Funcionario {
 
     public void cadastrarFuncionario(Funcionario funcionario) throws ExceptionDAO{
         new FuncionarioDAO().cadastrarFuncionario(funcionario);
+    }
+    
+    public ArrayList<Funcionario> listarClientes(String nome) throws ExceptionDAO{
+        return new FuncionarioDAO().listarFuncionarios(nome);
     }
 }

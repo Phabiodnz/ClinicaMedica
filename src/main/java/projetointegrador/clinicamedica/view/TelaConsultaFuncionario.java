@@ -4,7 +4,12 @@
  */
 package projetointegrador.clinicamedica.view;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import projetointegrador.clinicamedica.controller.FuncionarioController;
+import projetointegrador.clinicamedica.daos.ExceptionDAO;
+import projetointegrador.clinicamedica.model.Funcionario;
 
 /**
  *
@@ -12,9 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaConsultaFuncionario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaConsultaFuncionario
-     */
+
     public TelaConsultaFuncionario() {
         initComponents();
     }
@@ -31,8 +34,8 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelTitulo = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
-        JLabelDigiteID = new javax.swing.JLabel();
-        jTextID = new javax.swing.JTextField();
+        JLabelDigiteNome = new javax.swing.JLabel();
+        jTextNome = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultaFuncionario = new javax.swing.JTable();
@@ -64,8 +67,8 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        JLabelDigiteID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        JLabelDigiteID.setText("Digite o ID do Funcionário: ");
+        JLabelDigiteNome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        JLabelDigiteNome.setText("Digite o Nome do Funcionário: ");
 
         jButtonConsultar.setBackground(new java.awt.Color(255, 51, 51));
         jButtonConsultar.setText("Consultar");
@@ -77,46 +80,6 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
 
         jTableConsultaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -156,15 +119,15 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
             .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(JLabelDigiteID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addComponent(JLabelDigiteNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonConsultar)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         jPanelPrincipalLayout.setVerticalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,8 +135,8 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelDigiteID)
-                    .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JLabelDigiteNome)
+                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
@@ -198,7 +161,32 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        JOptionPane.showMessageDialog(null,"Consulta Efetuada");
+       String nome = jTextNome.getText();
+        DefaultTableModel tableModel = (DefaultTableModel) jTableConsultaFuncionario.getModel();
+        tableModel.setRowCount(0);
+        FuncionarioController funcionarioController = new FuncionarioController();
+        
+        try {
+            ArrayList<Funcionario> funcionarios = funcionarioController.listarFuncionarios(nome);
+            funcionarios.forEach((Funcionario funcionario) -> {
+                tableModel.addRow(new Object[]{
+                    funcionario.getIdFuncionario(),
+                    funcionario.getNomeCompleto(),
+                    funcionario.getRG(),
+                    funcionario.getCPF(),
+                    funcionario.getEndereco(),
+                    funcionario.getNumero(),
+                    funcionario.getBairro(),
+                    funcionario.getCidade(),
+                    funcionario.getEstado(),
+                    funcionario.getTelefone(),
+                    funcionario.getDataNascimento(),
+                    funcionario.getSexo()
+                });
+            });
+        } catch (ExceptionDAO e1) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro" + e1);
+        }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
@@ -237,13 +225,13 @@ public class TelaConsultaFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLabelDigiteID;
+    private javax.swing.JLabel JLabelDigiteNome;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConsultaFuncionario;
-    private javax.swing.JTextField jTextID;
+    private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
 }
