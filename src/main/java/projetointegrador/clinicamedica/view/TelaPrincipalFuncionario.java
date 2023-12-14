@@ -34,16 +34,14 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
         jLabelActions = new javax.swing.JLabel();
         jLabelSubtituloFuncionario = new javax.swing.JLabel();
         jLabelSubtituloMedico = new javax.swing.JLabel();
-        jButtonAlterarFuncionario = new javax.swing.JButton();
         jButtonCadastrarFuncionario = new javax.swing.JButton();
         jButtonConsultarFuncionario = new javax.swing.JButton();
         jButtonDeletarFuncionario = new javax.swing.JButton();
-        jButtonAlterarMedico = new javax.swing.JButton();
         jButtonCadastrarMedico = new javax.swing.JButton();
         jButtonConsultarMedico = new javax.swing.JButton();
         jButtonDeletarMedico = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clinica Médica");
         setResizable(false);
 
@@ -51,16 +49,16 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("CLINICA MÉDICA");
+        jLabelTitulo.setText("CLÍNICA MÉDICA");
 
         javax.swing.GroupLayout jPanelTituloLayout = new javax.swing.GroupLayout(jPanelTitulo);
         jPanelTitulo.setLayout(jPanelTituloLayout);
         jPanelTituloLayout.setHorizontalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTituloLayout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(jLabelTitulo)
-                .addGap(248, 248, 248))
+                .addGap(246, 246, 246))
         );
         jPanelTituloLayout.setVerticalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,8 +84,6 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
         jLabelSubtituloMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelSubtituloMedico.setText("MÉDICO");
 
-        jButtonAlterarFuncionario.setText("Alterar Funcionario");
-
         jButtonCadastrarFuncionario.setText("Cadastrar Funcionário");
         jButtonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +99,11 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
         });
 
         jButtonDeletarFuncionario.setText("Deletar Funcionário");
-
-        jButtonAlterarMedico.setText("Alterar Médico");
+        jButtonDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrir_TelaDeletarFuncionario(evt);
+            }
+        });
 
         jButtonCadastrarMedico.setText("Cadastrar Médico");
 
@@ -144,15 +143,11 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
                         .addComponent(jLabelSubtituloMedico)
                         .addGap(80, 80, 80))
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jButtonAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAlterarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonConsultarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonCadastrarFuncionario)
-                            .addComponent(jButtonDeletarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButtonConsultarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonDeletarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonCadastrarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,10 +167,6 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabelSubtituloMedico))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAlterarFuncionario)
-                    .addComponent(jButtonAlterarMedico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrarFuncionario)
                     .addComponent(jButtonCadastrarMedico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,7 +177,7 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDeletarFuncionario)
                     .addComponent(jButtonDeletarMedico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(jLabelFuncao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelFuncionario)
@@ -221,6 +212,11 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
         TelaConsultaFuncionario telaConsulta = new TelaConsultaFuncionario();
         telaConsulta.setVisible(true);
     }//GEN-LAST:event_abrir_TelaConsultaFuncionario
+
+    private void abrir_TelaDeletarFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_TelaDeletarFuncionario
+        TelaDeletarFuncionario telaDeletar = new TelaDeletarFuncionario();
+        telaDeletar.setVisible(true);
+    }//GEN-LAST:event_abrir_TelaDeletarFuncionario
 
     /**
      * @param args the command line arguments
@@ -258,8 +254,6 @@ public class TelaPrincipalFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAlterarFuncionario;
-    private javax.swing.JButton jButtonAlterarMedico;
     private javax.swing.JButton jButtonCadastrarFuncionario;
     private javax.swing.JButton jButtonCadastrarMedico;
     private javax.swing.JButton jButtonConsultarFuncionario;

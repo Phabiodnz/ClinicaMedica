@@ -12,7 +12,7 @@ import projetointegrador.clinicamedica.controller.FuncionarioController;
  * @author Phabi
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
-
+    private int idFuncionario = 0;
     /**
      * Creates new form TelaCadastroFuncionario
      */
@@ -54,7 +54,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jButtonCadastro = new javax.swing.JButton();
         jlabelData1 = new javax.swing.JLabel();
         jtxtSexo = new javax.swing.JTextField();
-        jTextFieldID = new javax.swing.JTextField();
+        jtxtID = new javax.swing.JTextField();
         jlabelID = new javax.swing.JLabel();
         jLabelAviso = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -157,9 +157,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jlabelData1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jlabelData1.setText("Sexo");
 
-        jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
+        jtxtID.setText("0");
+        jtxtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIDActionPerformed(evt);
+                jtxtIDActionPerformed(evt);
             }
         });
 
@@ -168,7 +169,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         jLabelAviso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelAviso.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelAviso.setText("*- Insira caso queira alterar");
+        jLabelAviso.setText("*- Insira caso queira alterar, se não mantenha em 0");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -243,7 +244,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jlabelID)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jtxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlabelTelefone)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -292,7 +293,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlabelData1)
                     .addComponent(jtxtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlabelID)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
@@ -327,21 +328,28 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         
         try{
             FuncionarioController funcionarioController = new FuncionarioController();
-            sucesso = funcionarioController.cadastrarFuncionario(jtxtNome.getText(), jtxtRG.getText(),jtxtCPF.getText(), jtxtEndereco.getText(), jtxtNumero.getText(), 
+                
+            if (Integer.parseInt(jtxtID.getText()) == 0){
+                sucesso = funcionarioController.cadastrarFuncionario(jtxtNome.getText(), jtxtRG.getText(),jtxtCPF.getText(), jtxtEndereco.getText(), jtxtNumero.getText(), 
+                        jtxtBairro.getText(),  jtxtCidade.getText(), jtxtEstado.getText(), jtxtTelefone.getText(), jformtxtData.getText(), jtxtSexo.getText());
+            }else{
+                sucesso = funcionarioController.alterarFuncionario(Integer.parseInt(jtxtID.getText()),jtxtNome.getText(), jtxtRG.getText(),jtxtCPF.getText(), jtxtEndereco.getText(), jtxtNumero.getText(), 
                     jtxtBairro.getText(),  jtxtCidade.getText(), jtxtEstado.getText(), jtxtTelefone.getText(), jformtxtData.getText(), jtxtSexo.getText());
+            }
+            
             if(sucesso){
                 JOptionPane.showMessageDialog(null,"O cadastro foi realizado com sucesso");
                 }else{
                 JOptionPane.showMessageDialog(null,"Os campos não foram preenchidos corretamente");
             }
-        }catch (Exception erro){
-            JOptionPane.showMessageDialog(null,"Erro:" + erro);
+        }catch (Exception e1){
+            JOptionPane.showMessageDialog(null,"Erro:" + e1);
         }
     }//GEN-LAST:event_jButtonCadastroActionPerformed
 
-    private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
+    private void jtxtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIDActionPerformed
+    }//GEN-LAST:event_jtxtIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,7 +390,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAviso;
-    private javax.swing.JTextField jTextFieldID;
     private javax.swing.JFormattedTextField jformtxtData;
     private javax.swing.JLabel jlabelBairro;
     private javax.swing.JLabel jlabelCPF;
@@ -402,6 +409,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtCidade;
     private javax.swing.JTextField jtxtEndereco;
     private javax.swing.JTextField jtxtEstado;
+    private javax.swing.JTextField jtxtID;
     private javax.swing.JTextField jtxtNome;
     private javax.swing.JTextField jtxtNumero;
     private javax.swing.JTextField jtxtRG;

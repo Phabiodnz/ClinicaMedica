@@ -158,7 +158,6 @@ public class TelaLogin extends javax.swing.JFrame {
         
         if (login.equals(adm.getLogin()) && senha.equals(adm.getSenha())){
             TelaPrincipalFuncionario telaPrincipalFuncionario = new TelaPrincipalFuncionario();
-            this.dispose();
             telaPrincipalFuncionario.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,"LOGIN OU SENHA INVALIDOS");

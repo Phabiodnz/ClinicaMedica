@@ -143,4 +143,12 @@ public class Funcionario {
     public ArrayList<Funcionario> listarClientes(String nome) throws ExceptionDAO{
         return new FuncionarioDAO().listarFuncionarios(nome);
     }
+    
+    public void alterarFuncionario(Funcionario funcionario) throws ExceptionDAO{
+        new FuncionarioDAO().alterarFuncionario(funcionario);
+    }
+    
+    public void apagarFuncionario(Funcionario funcionario) throws ExceptionDAO{
+        new FuncionarioDAO().apagarFuncionario(funcionario);
+    }
 }
